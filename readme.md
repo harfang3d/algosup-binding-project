@@ -18,7 +18,7 @@ An Algosup x Harfang Project.
 <a name="overview"></a>
 ## Overview
 
-Fabgen was written for the Harfang 3D project to bring the C++ engine to languages such as Python, Lua and Go. It was written as a replacement for SWIG, a very well-known binding generator supporting a lot of target languages.
+[Fabgen](https://github.com/ejulien/FABGen) was written for the [Harfang 3D](https://github.com/harfang3d/) project to bring the C++ engine to languages such as Python, Lua and Go. It was written as a replacement for [SWIG](https://www.swig.org/), a very well-known binding generator supporting a lot of target languages.
 
 SWIG has different issues we wished to address:
 - Very old and complex codebase. Language support is written partially in C and SWIG interface files which are almost a language by themselves. The C codebase does everything through a single Object struct hiding the real type of variables making it extremely difficult to debug and extend the SWIG core.
