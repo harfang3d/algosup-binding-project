@@ -1,0 +1,1 @@
+![fabgen flowchart](img/fig-1-binding-generator.png)
