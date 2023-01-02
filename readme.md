@@ -4,6 +4,18 @@
 
 An Algosup x Harfang Project.
 
+#### Table of contents
+
+1. [Overview](#overview)
+   - [Supported languages](#supported_languages)
+   - [Proposed languages](#proposed_languages)
+2. [Writing a binding generator](#writing_a_binding_generator)
+   - [C/C++ and dynamically typed languages](#c_and_dynamically_typed_languages)
+   - [C/C++ and statically typed languages](#c_and_statically_typed_languages)
+3. [FABGen testrun](#fabgen_testrun)
+4. [FABGen architecture](#fabgen_architecture)
+`
+<a name="overview"></a>
 ## Overview
 
 Fabgen was written for the Harfang 3D project to bring the C++ engine to languages such as Python, Lua and Go. It was written as a replacement for SWIG, a very well-known binding generator supporting a lot of target languages.
@@ -18,6 +30,7 @@ Fabgen tries to solve this issues by:
 
 As a newer project Fabgen also tries to leverage newer APIs whenever possible for example by supporting CPython limited ABI so that extension modules it generates can be used by any version of CPython >3.2 without recompilation (at least in theory, the Py_LIMITED_API support in CPython is finicky at best).
 
+<a name="supported_languages"></a>
 ### Supported languages
 
 - Python 3.2+ (CPython)
@@ -35,6 +48,7 @@ As a newer project Fabgen also tries to leverage newer APIs whenever possible fo
   - Statically typed
   - Link to C library, C++ has to be wrapped with C first (https://stackoverflow.com/questions/1713214/how-to-use-c-in-go)
 
+<a name="proposed_languages"></a>
 ### Proposed languages
 
 - Rust
@@ -46,12 +60,14 @@ As a newer project Fabgen also tries to leverage newer APIs whenever possible fo
   - Statically typed
   - Link to C library (C++ has to be wrapped with C first)
 
+<a name="writing_a_binding_generator"></a>
 ## Writing a binding generator
 
 You must know C++ and the target language (Python, Lua, Rust, etc...) and its feature set. A deep understanding of those features and inner workings is required to come up with a correct solution. Taking any shortcut is a guaranteed core dump or memory leak on the user side at a later point.
 
 Think of this as designing Jenga blocks: you have no idea how intertwined those pieces will be in the user's program so they must be correct from every possible angle.
 
+<a name="c_and_dynamically_typed_languages"></a>
 ### C/C++ and dynamically typed languages (eg. Python, Lua, Squirrel)
 
 Dynamically typed languages usually hold values of any type in instances of a polymorphic Object type (eg. PyObject in CPython, stack value in Lua).
@@ -83,6 +99,7 @@ When calling the from_c function for a type, an ownership policy is passed to th
 
 In existing binding implementations, references to a native object are always stored as a pointer plus a 32 bit unsigned integer type and the ownership policy.
 
+<a name="c_and_statically_typed_languages"></a>
 ### C/C++ and statically typed languages (eg. Go, C#, Rust)
 
 A compiled statically typed language will almost always support a mechanism to import and call functions from a C-style ABI. Most of the time this will be the only way to call into a different language and the only to write extensions using native code for the target language.
@@ -123,7 +140,7 @@ The `get_global_vec3` function returns a pointer to a Vec3 that is owned by the 
 
 All sorts of strategies can be devised to address complex lifetime issues like the one presented here but selecting the best one to use depends on the native library being wrapped and the target language.
 
-### 3. Better integration with the target language
+#### 3. Better integration with the target language
 
 While the wrapped API can technically everything we need to use the native library its usage will feel completely foreign to the target language. Let's consider the following sequence of instructions to add two vectors in Python using the wrapped API directly. It might look like this:
 
@@ -159,6 +176,7 @@ print(f'x: {c.x} y: {c.y} z: {c.z}')
 
 Achieving this degree of integration of the native API types with CPython requires the use of PyTypeObject which is exactly what Fabgen does to implement support for operator overload and automatic memory management of native objects.
 
+<a name="fabgen_testrun"></a>
 ## FABGen testrun
 
 Let's perform a test run of FABGen.
@@ -210,6 +228,7 @@ To generate the Lua and CPython bindings for this library run: `{FABGen}\bind.py
 
 Let's have a look over the generated output!
 
+<a name="fabgen_architecture"></a>
 ## FABGen architecture
 
 ![fabgen flowchart](img/fig-1-binding-generator.png)
