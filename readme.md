@@ -1,3 +1,9 @@
+<img src="img/algosup-harfang-logo.png" align="right" width="300"/>
+
+# Adding a language to FabGen
+
+An Algosup x Harfang Project.
+
 ## Overview
 
 Fabgen was written for the Harfang 3D project to bring the C++ engine to languages such as Python, Lua and Go. It was written as a replacement for SWIG, a very well-known binding generator supporting a lot of target languages.
