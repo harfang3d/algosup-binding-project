@@ -182,7 +182,8 @@ Achieving this degree of integration of the native API types with CPython requir
 Let's perform a test run of FABGen.
 
 1. Install CPython 3.x
-1. Clone the git repository from `https://github.com/ejulien/FABGen.git`
+1. Fork the git repository from `https://github.com/ejulien/FABGen.git`
+1. Clone it locally
 1. Install requirements from the FABGen repository by running `pip install -r requirements.txt`
 
 We'll generate the Lua binding for the following hypothetical API (we're only interested in the generator output at this point):
