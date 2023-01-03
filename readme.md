@@ -136,7 +136,7 @@ const Vec3 *get_global_vec3();
 Vec3 new_vec3(float x, float y, float z);
 ```
 
-The `get_global_vec3` function returns a pointer to a Vec3 that is owned by the native layer, ownership is not passed to the target language. For small objects it might be justified to force a copy of the returned object to address potential issues with the object lifetime, the target language gets ownership of the returned object. But some native types might too expensive to copy or might simply be non-copyable.
+The `get_global_vec3` function returns a pointer to a Vec3 that is owned by the native layer, ownership is not passed to the target language. For small objects it might be justified to force a copy of the returned object to address potential issues with the object lifetime, the target language gets ownership of the returned object. But some native types might be too expensive to copy or might simply be non-copyable.
 
 All sorts of strategies can be devised to address complex lifetime issues like the one presented here but selecting the best one to use depends on the native library being wrapped and the target language.
 
