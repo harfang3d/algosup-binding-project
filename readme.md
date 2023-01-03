@@ -227,6 +227,8 @@ def bind(gen):
 
 To generate the Lua and CPython bindings for this library run: `{FABGen}\bind.py --lua --cpython --out {FABGen} test_bind.py`
 
+... or, on OS X or Linux: `python3 {FABGen}/bind.py --lua --cpython --out {FABGen} test_bind.py`
+
 Let's have a look over the generated output!
 
 <a name="fabgen_architecture"></a>
