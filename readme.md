@@ -13,8 +13,8 @@ An Algosup x Harfang Project.
    - [C/C++ and dynamically typed languages](#c_and_dynamically_typed_languages)
    - [C/C++ and statically typed languages](#c_and_statically_typed_languages)
 3. [FABGen testrun](#fabgen_testrun)
-   - (minimalistic C++ library/API](#cpp_api_sample)
-   - (FABgen binding description for this API](#cpp_api_binding_description)
+   - [minimalistic C++ library/API](#cpp_api_sample)
+   - [FABgen binding description for this API](#cpp_api_binding_description)
 4. [FABGen architecture](#fabgen_architecture)
 `
 <a name="overview"></a>
